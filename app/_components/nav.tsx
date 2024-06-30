@@ -50,7 +50,7 @@ const Nav = () => {
             animationDuration={400}
             animationDelay={0}
             padding={0}
-            color="rgb(71 71 253 / 0.5)"
+            color="rgb(135, 206, 235, 0.8)"
           >
             <span className="lg:inline-block hidden">Source Code</span>
           </RoughNotation>
@@ -86,7 +86,7 @@ const Nav = () => {
             animationDuration={400}
             animationDelay={0}
             padding={0}
-            color="rgb(71 71 253 / 0.5)"
+            color="rgb(135, 206, 235, 0.8)"
           >
             <span className="lg:inline-block hidden">Twitter</span>
           </RoughNotation>

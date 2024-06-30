@@ -5,40 +5,38 @@ import Footer from "./_components/footer";
 
 const UnitConverter = () => {
   const [aoValue, setAoValue] = useState("");
-  const [armstrongValue, setarmstrongValue] = useState("");
+  const [armstrongValue, setArmstrongValue] = useState("");
 
   const handleAoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value.replace(/,/g, "");
     setAoValue(value);
     if (isValidNumber(value)) {
       const ao = parseFloat(value);
-      setarmstrongValue(
-        (ao * 1_000_000_000).toLocaleString("en-US", {
-          maximumFractionDigits: 20,
-        })
-      );
+      const armstrong = (ao * 1_000_000_000).toLocaleString("en-US", {
+        maximumFractionDigits: 0,
+      });
+      setArmstrongValue(armstrong);
     } else {
-      setarmstrongValue("");
+      setArmstrongValue("");
     }
   };
 
   const handleArmstrongChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setarmstrongValue(value);
+    const value = e.target.value.replace(/,/g, "");
+    setArmstrongValue(value);
     if (isValidNumber(value)) {
       const armstrong = parseFloat(value);
-      setAoValue(
-        (armstrong / 1_000_000_000).toLocaleString("en-US", {
-          maximumFractionDigits: 20,
-        })
-      );
+      const ao = (armstrong / 1_000_000_000).toLocaleString("en-US", {
+        maximumFractionDigits: 9,
+      });
+      setAoValue(ao);
     } else {
       setAoValue("");
     }
   };
 
   const isValidNumber = (value: string) => {
-    const number = parseFloat(value);
+    const number = parseFloat(value.replace(/,/g, ""));
     return !isNaN(number) && isFinite(number);
   };
 
