@@ -12,9 +12,7 @@ const UnitConverter = () => {
     setAoValue(value);
     if (isValidNumber(value)) {
       const ao = parseFloat(value);
-      const armstrong = (ao * 1_000_000_000).toLocaleString("en-US", {
-        maximumFractionDigits: 0,
-      });
+      const armstrong = formatLargeNumber(ao * 1_000_000_000);
       setArmstrongValue(armstrong);
     } else {
       setArmstrongValue("");
@@ -26,9 +24,7 @@ const UnitConverter = () => {
     setArmstrongValue(value);
     if (isValidNumber(value)) {
       const armstrong = parseFloat(value);
-      const ao = (armstrong / 1_000_000_000).toLocaleString("en-US", {
-        maximumFractionDigits: 9,
-      });
+      const ao = (armstrong / 1_000_000_000).toString();
       setAoValue(ao);
     } else {
       setAoValue("");
@@ -38,6 +34,10 @@ const UnitConverter = () => {
   const isValidNumber = (value: string) => {
     const number = parseFloat(value.replace(/,/g, ""));
     return !isNaN(number) && isFinite(number);
+  };
+
+  const formatLargeNumber = (number: number) => {
+    return number.toLocaleString("fullwide", { useGrouping: false });
   };
 
   return (
