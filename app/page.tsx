@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import BigNumber from "bignumber.js";
 import Nav from "@/app/_components/nav";
 import Footer from "./_components/footer";
 
@@ -11,9 +12,9 @@ const UnitConverter = () => {
     const value = e.target.value.replace(/,/g, "");
     setAoValue(value);
     if (isValidNumber(value)) {
-      const ao = parseFloat(value);
-      const armstrong = formatLargeNumber(ao * 1_000_000_000);
-      setArmstrongValue(armstrong);
+      const ao = new BigNumber(value);
+      const armstrong = ao.multipliedBy(1_000_000_000).toString();
+      setArmstrongValue(formatNumber(armstrong));
     } else {
       setArmstrongValue("");
     }
@@ -23,21 +24,21 @@ const UnitConverter = () => {
     const value = e.target.value.replace(/,/g, "");
     setArmstrongValue(value);
     if (isValidNumber(value)) {
-      const armstrong = parseFloat(value);
-      const ao = (armstrong / 1_000_000_000).toString();
-      setAoValue(ao);
+      const armstrong = new BigNumber(value);
+      const ao = armstrong.dividedBy(1_000_000_000).toString();
+      setAoValue(formatNumber(ao));
     } else {
       setAoValue("");
     }
   };
 
   const isValidNumber = (value: string) => {
-    const number = parseFloat(value.replace(/,/g, ""));
-    return !isNaN(number) && isFinite(number);
+    const number = new BigNumber(value.replace(/,/g, ""));
+    return !number.isNaN() && number.isFinite();
   };
 
-  const formatLargeNumber = (number: number) => {
-    return number.toLocaleString("fullwide", { useGrouping: false });
+  const formatNumber = (number: string) => {
+    return new BigNumber(number).toFixed();
   };
 
   return (
