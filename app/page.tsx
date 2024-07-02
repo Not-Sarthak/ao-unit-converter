@@ -60,7 +60,7 @@ const UnitConverter = () => {
               className="block ml-0.5 mb-2 text-white text-base lg:text-2xl font-semibold font-manrope"
               htmlFor="ao"
             >
-              Ao
+              AO
             </label>
             <input
               type="text"
@@ -68,7 +68,7 @@ const UnitConverter = () => {
               value={aoValue}
               onChange={handleAoChange}
               className="shadow appearance-none border border-[#27272a] bg-[#0d0d10] rounded-lg w-full py-2 px-3 text-[#f5f5f5] leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Ao"
+              placeholder="AO"
             />
           </div>
           <div className="mb-4">

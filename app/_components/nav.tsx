@@ -30,7 +30,7 @@ const Nav = () => {
         href="/"
         className="w-fit text-white text-2xl mb-0 lg:mb-4 font-semibold font-serif italic"
       >
-        UC
+        AO
       </a>
       <div className="flex gap-4 items-center">
         <a
